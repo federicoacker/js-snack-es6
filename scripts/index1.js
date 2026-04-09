@@ -1,4 +1,4 @@
-const names = [
+const names = [ //Array di nomi casuali
     "Pedala e Piangi", 
     "Ciclofallo", 
     "Bici da Brutta Figura", 
@@ -11,39 +11,44 @@ const names = [
     "Due Ruote di Vergogna"
 ]
 
-function createObjectArray(arraySize){
-    if(arraySize <= 0){
+//FUNZIONE che crea array di oggetti (in questo caso, array di bici)
+function createObjectArray(arraySize){ //Accetta una arraySize a scelta dell'utente
+    if(arraySize <= 0){// Se l'arraySize è minore di 0, restituisce codice d'errore -1
         return -1;
     }
 
-    const objectArray = [];
+    const objectArray = [];// array di oggetti che restituiremo
     for(let i = 0; i<arraySize; i++){
         const randomNameIndex = Math.floor(Math.random() * names.length); //Visto che sto usando Math.floor, questo mi andrà da 0 a 8
         const randomWeight = (Math.floor(Math.random() * (20 - 5)) + 1) + 5; // Peso random da 6 a 20 (che saranno kg);
-        const tempBike = 
+        const tempBike =  // Creiamo la bicicletta dandogli nome e peso
         {
-            name: names[randomNameIndex],
+            name: names[randomNameIndex], 
             weight: `${randomWeight}kg`
         };
-        objectArray.push(tempBike);
+        objectArray.push(tempBike); // Pushiamola nell'array
     }
 
-    return objectArray;
+    return objectArray; // Restituiamo l'array di oggetti
 }
 
-function findLightest(bikeArray){
+//FUNZIONE che trova la bici più leggera da un array di bici
+function findLightest(bikeArray){ 
     let lightest = bikeArray[0]; //Inizializziamo la bici più leggera come la prima
     for(let i = 0; i < bikeArray.length; i++){//Iteriamo tutte le bici
-        const currentBike = bikeArray[i];
-        const currentBikeWeight = parseInt(currentBike.weight); // Dovrebbe parsarmi solo il peso, togliendo il kg alla fine
-        if(currentBikeWeight < parseInt(lightest.weight)){
-            lightest = bikeArray[i];
+        const currentBike = bikeArray[i]; // Selezioniamo la bici corrente
+        const currentBikeWeight = parseInt(currentBike.weight); // Selezioniamo il suo peso, dovrebbe parsarmi solo il peso, togliendo il kg alla fine
+        if(currentBikeWeight < parseInt(lightest.weight)){ // Se il suo peso è inferiore a quello della bici lightest
+            lightest = bikeArray[i]; // Allora aggiorniamo la variabile lightest dandogli il riferimento alla nuova bici
         }
     }
-    return lightest;
+    return lightest; // Restituiamo la lightest, che è il riferimento alla bici con weight più basso
 }
 
-const bikeArray = createObjectArray(20);
-console.log(bikeArray);
-const lightest = findLightest(bikeArray);
-console.log(lightest);
+const bikeArray = createObjectArray(20); // Creiamo il nostro array di bici
+const lightest = findLightest(bikeArray); // Creiamo un riferimento alla bici più leggera nell'array
+console.log(`La bici più leggera è la bellissima: 
+    ${lightest.name} 
+    - pesa solo:
+    ${lightest.weight}`
+); //Stampiamo il risultato
