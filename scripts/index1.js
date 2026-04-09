@@ -18,11 +18,11 @@ function createObjectArray(arraySize){
 
     const objectArray = [];
     for(let i = 0; i<arraySize; i++){
-        const randomName = Math.floor(Math.random() * names.length); //Visto che sto usando Math.floor, questo mi andrà da 0 a 8
+        const randomNameIndex = Math.floor(Math.random() * names.length); //Visto che sto usando Math.floor, questo mi andrà da 0 a 8
         const randomWeight = (Math.floor(Math.random() * (20 - 5)) + 1) + 5; // Peso random da 6 a 20 (che saranno kg);
         const tempBike = 
         {
-            name: randomName,
+            name: names[randomNameIndex],
             weight: `${randomWeight}kg`
         };
         objectArray.push(tempBike);
@@ -41,3 +41,6 @@ function findLightest(arrayDiBiciclette){
     }
     return min;
 }
+
+const bikeArray = createObjectArray(20);
+console.log(bikeArray);
