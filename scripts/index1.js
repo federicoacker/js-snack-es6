@@ -111,7 +111,7 @@ function createBikeString(lightestBikeArray){
 }
 
 const bikeArray = createObjectArray(20); // Creiamo il nostro array di bici
-const lightest = findLightest(bikeArray); // Creiamo un riferimento alla bici più leggera nell'array
+const lightest = findLightest(bikeArray); // Creiamo la stringa risultato
 if(bikeArray === -1 || lightest === -1){
     console.error(`
         Errore negli elementi che sono stati passati alle funzioni: 
