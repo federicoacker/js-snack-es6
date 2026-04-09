@@ -17,5 +17,27 @@ function createObjectArray(arraySize){
     }
 
     const objectArray = [];
-    for(let i = 0; i<arraySize; i++)
+    for(let i = 0; i<arraySize; i++){
+        const randomName = Math.floor(Math.random() * names.length); //Visto che sto usando Math.floor, questo mi andrà da 0 a 8
+        const randomWeight = (Math.floor(Math.random() * (20 - 5)) + 1) + 5; // Peso random da 6 a 20 (che saranno kg);
+        const tempBike = 
+        {
+            name: randomName,
+            weight: `${randomWeight}kg`
+        };
+        objectArray.push(tempBike);
+    }
+
+    return objectArray;
+}
+
+function findLightest(arrayDiBiciclette){
+    let min = parseInt(arrayDiBiciclette[0].weight); //Dovrebbe parsarmi solo la part numerica di weight, escludendo kg
+    for(let i = 0; i < arrayDiBiciclette.length; i++){
+        const currentWeight = parseInt(arrayDiBiciclette[i].weight);
+        if(currentWeight < min){
+            min = currentWeight;
+        }
+    }
+    return min;
 }
