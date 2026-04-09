@@ -34,7 +34,11 @@ function createObjectArray(arraySize){ //Accetta una arraySize a scelta dell'ute
 
 //FUNZIONE che trova la bici più leggera da un array di bici
 function findLightest(bikeArray){ 
+    if(!Array.isArray(bikeArray)){//Ritorniamo codice d'errore se non ci passi un array
+        return -1;
+    }
     let lightest = bikeArray[0]; //Inizializziamo la bici più leggera come la prima
+
     for(let i = 0; i < bikeArray.length; i++){//Iteriamo tutte le bici
         const currentBike = bikeArray[i]; // Selezioniamo la bici corrente
         const currentBikeWeight = parseInt(currentBike.weight); // Selezioniamo il suo peso, dovrebbe parsarmi solo il peso, togliendo il kg alla fine
@@ -42,13 +46,24 @@ function findLightest(bikeArray){
             lightest = bikeArray[i]; // Allora aggiorniamo la variabile lightest dandogli il riferimento alla nuova bici
         }
     }
+
     return lightest; // Restituiamo la lightest, che è il riferimento alla bici con weight più basso
 }
 
 const bikeArray = createObjectArray(20); // Creiamo il nostro array di bici
 const lightest = findLightest(bikeArray); // Creiamo un riferimento alla bici più leggera nell'array
-console.log(`La bici più leggera è la bellissima: 
-    ${lightest.name} 
-    - pesa solo:
-    ${lightest.weight}`
-); //Stampiamo il risultato
+if(bikeArray === -1 || lightest === -1){
+    console.log(`
+        Errore negli elementi che sono stati passati alle funzioni: 
+        - createObjectArray(arraySize) 
+        - findLightest(bikeArray)
+        Controlla il codice`
+    );
+}
+else{
+    console.log(`La bici più leggera è la bellissima: 
+        ${lightest.name} 
+        - pesa solo:
+        ${lightest.weight}`
+    ); //Stampiamo il risultato
+}

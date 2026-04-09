@@ -138,4 +138,14 @@ function extractFoulArray(teamsArray){
 
 populateTeams(); // Generiamo i numeri per tutte le squadre
 const fouledArray = extractFoulArray(teamArray); // Estraiamo l'array con solo nomi e falli subiti
-console.log(fouledArray); // logghiamo l'array.
+
+if(fouledArray === -1){
+    console.log(`
+        Errore nell'argomento passato a:
+        - extractFoulArray(teamArray)
+        Controlla il codice
+        `);
+}
+else{
+    console.log(fouledArray); // logghiamo l'array.
+}
