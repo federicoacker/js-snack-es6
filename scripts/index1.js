@@ -31,16 +31,19 @@ function createObjectArray(arraySize){
     return objectArray;
 }
 
-function findLightest(arrayDiBiciclette){
-    let min = parseInt(arrayDiBiciclette[0].weight); //Dovrebbe parsarmi solo la part numerica di weight, escludendo kg
-    for(let i = 0; i < arrayDiBiciclette.length; i++){
-        const currentWeight = parseInt(arrayDiBiciclette[i].weight);
-        if(currentWeight < min){
-            min = currentWeight;
+function findLightest(bikeArray){
+    let lightest = bikeArray[0]; //Inizializziamo la bici più leggera come la prima
+    for(let i = 0; i < bikeArray.length; i++){//Iteriamo tutte le bici
+        const currentBike = bikeArray[i];
+        const currentBikeWeight = parseInt(currentBike.weight); // Dovrebbe parsarmi solo il peso, togliendo il kg alla fine
+        if(currentBikeWeight < parseInt(lightest.weight)){
+            lightest = bikeArray[i];
         }
     }
-    return min;
+    return lightest;
 }
 
 const bikeArray = createObjectArray(20);
 console.log(bikeArray);
+const lightest = findLightest(bikeArray);
+console.log(lightest);
